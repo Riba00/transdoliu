@@ -25,7 +25,7 @@
   <body class="h-full">
   ```
 -->
-    <div x-data="{ isSidebarOpen: false }" class="h-full">
+    <div x-data="{ isSidebarOpen: false, isProfileDropdownOpen: false }" class="h-full">
         <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
         <div class="relative z-50 lg:hidden" role="dialog" aria-modal="true" x-show="isSidebarOpen">
             <!--
@@ -300,8 +300,7 @@
 
                     <div class="flex items-center justify-end gap-x-4 lg:gap-x-6">
                         <!-- Profile dropdown -->
-                        <div class="relative" x-data="{ isProfileDropdownOpen: false }"
-                            @click.outside="isProfileDropdownOpen = false">
+                        <div class="relative" @click.outside="isProfileDropdownOpen = false">
                             <button type="button" class="-m-1.5 flex items-center p-1.5" id="user-menu-button"
                                 @click="isProfileDropdownOpen = !isProfileDropdownOpen" aria-expanded="false"
                                 aria-haspopup="true">

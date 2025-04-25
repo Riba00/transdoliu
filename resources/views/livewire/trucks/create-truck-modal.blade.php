@@ -1,7 +1,7 @@
-<div x-data="{ isCreateTruckModalOpen: true }" class="relative z-40" aria-labelledby="modal-title" role="dialog"
+<div x-data="{ isCreateTruckModalOpen: false }" class="relative z-40" aria-labelledby="modal-title" role="dialog"
     aria-modal="true" x-show="isCreateTruckModalOpen" x
     x-on:open-truck-create-modal.window="isCreateTruckModalOpen = true"
-    x-on:close-truck-create-modal.window="isCreateTruckModalOpen = false">
+    x-on:close-truck-create-modal.window="isCreateTruckModalOpen = false" x-cloak>
     <!--
       Background backdrop, show/hide based on modal state.
   
