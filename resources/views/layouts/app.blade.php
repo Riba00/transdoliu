@@ -14,6 +14,8 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
@@ -238,6 +240,7 @@
                                     </a>
                                 </li>
 
+                                @if (false)
                                 <li>
                                     <a href="#"
                                         class="group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold {{ request()->routeIs('customers.*') ? 'bg-indigo-700 text-white' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' }}">
@@ -250,6 +253,7 @@
                                         Customers
                                     </a>
                                 </li>
+                                @endif
 
                                 <li>
                                     <a href="{{ route('trucks.index') }}" wire:navigate
@@ -261,6 +265,7 @@
                             </ul>
                         </li>
 
+                        @if (false)
                         <li class="mt-auto">
                             <a href="#"
                                 class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-indigo-200 hover:bg-indigo-700 hover:text-white">
@@ -275,6 +280,7 @@
                                 Settings
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </nav>
             </div>
@@ -330,7 +336,7 @@
                                     From: "transform opacity-100 scale-100"
                                     To: "transform opacity-0 scale-95"
                                 -->
-                            <div class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
+                            <div class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none" x-cloak
                                 x-show="isProfileDropdownOpen" x-transition:enter="transition ease-out duration-100"
                                 x-transition:enter-start="transform opacity-0 scale-95"
                                 x-transition:enter-end="transform opacity-100 scale-100"
@@ -361,6 +367,7 @@
             </main>
         </div>
     </div>
+    @livewireScripts
 </body>
 
 </html>
