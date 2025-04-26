@@ -1,7 +1,7 @@
 <div class="mt-3 flow-root">
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-            <div class="overflow-hidden shadow ring-1 ring-black/5 sm:rounded-lg">
+            <div class="overflow-hidden shadow ring-1 ring-black/5 rounded-lg">
                 <table class="min-w-full divide-y divide-gray-300">
                     <thead class="bg-gray-50">
                         <tr>
@@ -36,7 +36,7 @@
                                         class="relative whitespace-nowrap py-4 pl-3 pr-4 text-sm font-medium sm:pr-6 w-1/6">
                                         <div class="flex justify-end space-x-3">
                                             <button class="text-indigo-600 hover:text-indigo-900">Edit</button>
-                                            <button @click="$wire.deleteTruck({{ $truck->id }})" class="text-red-600 hover:text-red-900">Delete</button>
+                                            <button wire:click="$set('deleteTruckId', {{ $truck->id }})" x-on:click="$dispatch('open-delete-truck-modal')" class="text-red-600 hover:text-red-900">Delete</button>
                                         </div>
                                     </td>
                                 </tr>

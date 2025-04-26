@@ -28,6 +28,7 @@ class CreateTruckModal extends Component
 
             $this->dispatch('close-truck-create-modal');
             $this->dispatch('refresh-trucks');
+            $this->dispatch('truck-created');
 
             // Reset the form fields
             $this->reset(['name', 'capacity', 'plateNumber']);

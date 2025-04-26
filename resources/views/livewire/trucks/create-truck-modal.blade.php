@@ -15,7 +15,7 @@
     <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
 
     <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+        <div class="flex min-h-full justify-center p-4 text-center items-center sm:p-0">
             <!--
           Modal panel, show/hide based on modal state.
   
@@ -28,10 +28,10 @@
         -->
             <div @click.away="isCreateTruckModalOpen = false" @keydown.escape.window="isCreateTruckModalOpen = false"
                 class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
-                <div class="sm:flex sm:items-start justify-between">
+                <div class="flex items-center justify-between">
 
-                    <div class="flex mt-3 text-center sm:mt-0">
-                        <h3 class="text-xl font-semibold text-gray-900" id="modal-title">CREATE NEW TRUCK</h3>
+                    <div class="flex items-center">
+                        <h3 class="text-sm sm:text-xl font-semibold text-gray-900" id="modal-title">CREATE NEW TRUCK</h3>
                     </div>
 
                     <div @click="isCreateTruckModalOpen = false">
