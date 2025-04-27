@@ -24,8 +24,6 @@
             </div>
         </div>
 
-
-
         <div x-show="currentTruckTab === 'trucks'" class="mt-6">
             <div class="flex justify-end">
                 <button type="button" @click="$dispatch('open-truck-create-modal')"
@@ -37,6 +35,7 @@
             </div>
 
             <livewire:trucks.create-truck-modal />
+            <livewire:trucks.edit-truck-modal />
             <livewire:trucks.delete-truck-modal />
 
         </div>
@@ -76,26 +75,19 @@
                 });
             });
 
-            // window.addEventListener('open-delete-truck-modal', function () {
-            //     Swal.fire({
-            //         title: "Are you sure to delete this truck?",
-            //         text: "You won't be able to revert this!",
-            //         icon: "warning",
-            //         showCancelButton: true,
-            //         confirmButtonColor: "#3085d6",
-            //         cancelButtonColor: "#d33",
-            //         confirmButtonText: "Yes, delete it!"
-            //     }).then((result) => {
-            //         if (result.isConfirmed) {
-            //             Swal.fire({
-            //                 title: "Deleted!",
-            //                 text: "Your file has been deleted.",
-            //                 icon: "success"
-            //             });
+            window.addEventListener('truck-updated', function () {
+                // Open the modal here
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Truck Saved Successfully",
+                    showConfirmButton: false,
+                    timer: 2500,
+                    toast: true,
+                    timerProgressBar: true,
+                });
+            });
 
-            //         }
-            //     });
-            // });
         });
     </script>
 </x-app-layout>

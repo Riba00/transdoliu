@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Trucks;
 
-use Livewire\Attributes\On;
-use Livewire\Component;
 use App\Models\Truck;
-use Log;
+use Livewire\Component;
+use Livewire\Attributes\On;
+use Illuminate\Support\Facades\Log;
 
 class TrucksTable extends Component
 {

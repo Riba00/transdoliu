@@ -35,7 +35,7 @@
                                     <td
                                         class="relative whitespace-nowrap py-4 pl-3 pr-4 text-sm font-medium sm:pr-6 w-1/6">
                                         <div class="flex justify-end space-x-3">
-                                            <button class="text-indigo-600 hover:text-indigo-900">Edit</button>
+                                            <button wire:click="$dispatch('open-edit-truck-modal', { truck: {{ $truck }} })" class="text-indigo-600 hover:text-indigo-900">Edit</button>
                                             <button wire:click="$set('deleteTruckId', {{ $truck->id }})" x-on:click="$dispatch('open-delete-truck-modal')" class="text-red-600 hover:text-red-900">Delete</button>
                                         </div>
                                     </td>
