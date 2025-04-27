@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Trucks;
 
-use Livewire\Component;
 use App\Models\Truck;
-use Log;
+use Livewire\Component;
+use Illuminate\Support\Facades\Log;
 
 class CreateTruckModal extends Component
 {
@@ -28,12 +28,19 @@ class CreateTruckModal extends Component
 
             $this->dispatch('close-truck-create-modal');
             $this->dispatch('refresh-trucks');
-            $this->dispatch('truck-created');
-
+            $this->dispatch('show-toast', [
+                'message' => 'Truck created successfully',
+                'type' => 'success',
+            ]);
             // Reset the form fields
             $this->reset(['name', 'capacity', 'plateNumber']);
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
+            $this->dispatch('show-toast', [
+                'message' => 'Failed to create truck',
+                'type' => 'error',
+            ]);
+            $this->dispatch('close-truck-create-modal');
         }
 
     }

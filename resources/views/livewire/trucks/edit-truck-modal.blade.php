@@ -1,5 +1,5 @@
-<div x-data="{ isEditTruckModalOpen: @entangle('isEditTruckModalOpen') }" class="relative z-40" aria-labelledby="modal-title" role="dialog"
-    aria-modal="true" x-show="isEditTruckModalOpen"
+<div x-data="{ isEditTruckModalOpen: @entangle('isEditTruckModalOpen') }" class="relative z-40"
+    aria-labelledby="modal-title" role="dialog" aria-modal="true" x-show="isEditTruckModalOpen"
     x-on:close-edit-truck-modal.window="isEditTruckModalOpen = false" x-cloak>
     <!--
       Background backdrop, show/hide based on modal state.
@@ -11,7 +11,8 @@
         From: "opacity-100"
         To: "opacity-0"
     -->
-    <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true" x-show="isEditTruckModalOpen" x-transition.duration></div>
+    <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true" x-show="isEditTruckModalOpen"
+        x-transition.duration></div>
 
     <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div class="flex min-h-full justify-center p-4 text-center items-center sm:p-0">
@@ -25,7 +26,8 @@
             From: "opacity-100 translate-y-0 sm:scale-100"
             To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         -->
-            <div @click.away="isEditTruckModalOpen = false" @keydown.escape.window="isEditTruckModalOpen = false" x-show="isEditTruckModalOpen" x-transition.duration
+            <div @click.away="isEditTruckModalOpen = false" @keydown.escape.window="isEditTruckModalOpen = false"
+                x-show="isEditTruckModalOpen" x-transition.duration
                 class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div class="flex items-center justify-between">
 
@@ -53,9 +55,11 @@
                     </div>
 
                     <div class="sm:col-span-3">
-                        <label for="plateNumber" class="block text-sm/6 font-medium text-gray-900">Plate Number *</label>
+                        <label for="plateNumber" class="block text-sm/6 font-medium text-gray-900">Plate Number
+                            *</label>
                         <div class="">
-                            <input type="text" name="plateNumber" id="plateNumber" autocomplete="given-name" wire:model="plateNumber"
+                            <input type="text" name="plateNumber" id="plateNumber" autocomplete="given-name"
+                                wire:model="plateNumber"
                                 class="block w-full rounded-md px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 {{ $errors->has('plateNumber') ? 'border-2 border-red-500 bg-red-50' : 'bg-white' }}">
                         </div>
                         @error('plateNumber')
@@ -66,7 +70,8 @@
                     <div class="sm:col-span-3">
                         <label for="capacity" class="block text-sm/6 font-medium text-gray-900">Capacity *</label>
                         <div class="">
-                            <input type="number" name="capacity" id="capacity" autocomplete="given-name" wire:model="capacity"
+                            <input type="number" name="capacity" id="capacity" autocomplete="given-name"
+                                wire:model="capacity"
                                 class="block w-full rounded-md px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 {{ $errors->has('capacity') ? 'border-2 border-red-500 bg-red-50' : 'bg-white' }}">
                         </div>
                         @error('capacity')
@@ -79,11 +84,15 @@
                 </div>
                 <p class="mt-5 text-gray-600 text-sm">(*) Required fields</p>
 
-
-
                 <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                    <button type="button" @click="$wire.editTruck()"
-                        class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">Save</button>
+                    <button type="button" @click="$wire.editTruck()" wire:loading.attr="disabled"
+                        class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">
+                        <span wire:loading.remove>Save</span>
+
+                        <div class="mx-4" role="status" wire:loading>
+                            <x-svg.spinner class="size-4 text-gray-200 animate-spin fill-blue-600" />
+                        </div>
+                    </button>
                     <button type="button" @click="isEditTruckModalOpen = false"
                         class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
                 </div>

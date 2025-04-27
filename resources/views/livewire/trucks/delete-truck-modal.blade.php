@@ -12,7 +12,8 @@
         From: "opacity-100"
         To: "opacity-0"
     -->
-    <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true" x-show="isDeleteTruckModalOpen" x-transition.duration></div>
+    <div class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true" x-show="isDeleteTruckModalOpen"
+        x-transition.duration></div>
 
     <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div class="flex min-h-full justify-center p-4 text-center items-center sm:p-0">
@@ -38,15 +39,23 @@
                         </svg>
                     </div>
                     <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                        <h3 class="text-base font-semibold text-gray-900" id="modal-title">Are you sure you want to delete this truck?</h3>
+                        <h3 class="text-base font-semibold text-gray-900" id="modal-title">Are you sure you want to
+                            delete this truck?</h3>
                         <div class="mt-2">
-                            <p class="text-sm text-gray-500">This action cannot be undone. The truck and all its associated data will be permanently removed.</p>
+                            <p class="text-sm text-gray-500">This action cannot be undone. The truck and all its
+                                associated data will be permanently removed.</p>
                         </div>
                     </div>
                 </div>
-                <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                    <button type="button" x-on:click="$dispatch('delete-truck')"
-                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Delete</button>
+                <div x-data="{ isLoading : false }" class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+                    <button type="button" x-on:click="isLoading=true; $dispatch('delete-truck')" 
+                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
+                        <span x-show="!isLoading">Delete</span>
+
+                        <div class="mx-4" role="status" x-show="isLoading">
+                            <x-svg.spinner class="size-4 text-gray-200 animate-spin fill-red-600" />
+                        </div>
+                    </button>
                     <button type="button" x-on:click="isDeleteTruckModalOpen = false"
                         class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
                 </div>

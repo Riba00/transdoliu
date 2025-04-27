@@ -3,6 +3,7 @@
 namespace App\Livewire\Trucks;
 
 use App\Models\Truck;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\Attributes\On;
 
@@ -42,17 +43,28 @@ class EditTruckModal extends Component
             ],
             'capacity' => 'required|numeric|min:0',
         ]);
+        try {
+            $this->truck->update([
+                'name' => $this->name,
+                'plate_number' => $this->plateNumber,
+                'capacity' => $this->capacity,
+            ]);
 
-        $this->truck->update([
-            'name' => $this->name,
-            'plate_number' => $this->plateNumber,
-            'capacity' => $this->capacity,
-        ]);
+            $this->dispatch('refresh-trucks');
+            $this->dispatch('show-toast', [
+                'message' => 'Truck updated successfully',
+                'type' => 'success',
+            ]);
 
-        $this->dispatch('refresh-trucks');
-        $this->dispatch('truck-updated');
-        
-        $this->isEditTruckModalOpen = false;
+            $this->isEditTruckModalOpen = false;
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            $this->dispatch('show-toast', [
+                'message' => 'Failed to update truck',
+                'type' => 'error',
+            ]);
+            $this->isEditTruckModalOpen = false;
+        }
     }
 
 
