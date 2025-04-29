@@ -102,12 +102,7 @@
                                         <li>
                                             <a href="{{ route('trucks.index') }}" wire:navigate
                                                 class="group flex gap-x-3 rounded-md {{ request()->routeIs('trucks.*') ? 'bg-indigo-700 text-white' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' }} p-2 text-sm/6 font-semibold">
-                                                <svg class="size-6 shrink-0 text-indigo-200 group-hover:text-white"
-                                                    fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                    stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-                                                </svg>
+                                                <x-svg.truck class="size-6 shrink-0 text-indigo-200 group-hover:text-white" />
                                                 Trucks
                                             </a>
                                         </li>
@@ -273,9 +268,11 @@
                                 @click="isProfileDropdownOpen = !isProfileDropdownOpen" aria-expanded="false"
                                 aria-haspopup="true">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="size-8 rounded-full bg-gray-50"
-                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt="">
+                                <span class="inline-block size-8 overflow-hidden rounded-full bg-gray-100">
+                                    <svg class="size-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                    </svg>
+                                  </span>
                                 <span class="hidden lg:flex lg:items-center">
                                     <span class="ml-4 text-sm/6 font-semibold text-gray-900"
                                         aria-hidden="true">{{ auth()->user()->name }}</span>
@@ -298,7 +295,7 @@
                                     From: "transform opacity-100 scale-100"
                                     To: "transform opacity-0 scale-95"
                                 -->
-                            <div class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
+                            <div class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white pb-2 sm:py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
                                 x-cloak x-show="isProfileDropdownOpen"
                                 x-transition:enter="transition ease-out duration-100"
                                 x-transition:enter-start="transform opacity-0 scale-95"
@@ -307,6 +304,11 @@
                                 x-transition:leave-start="transform opacity-100 scale-100"
                                 x-transition:leave-end="transform opacity-0 scale-95" role="menu"
                                 aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                                <div class="border-b border-gray-200 bg-gray-200 sm:hidden">
+                                    <span class="block px-3 py-1 font-bold text-sm/6 text-gray-900">{{ auth()->user()->name }}</span>
+                                </div>
+
+
                                 <!-- Active: "bg-gray-50 outline-none", Not Active: "" -->
                                 <a href="{{ route('profile.edit') }}" class="block px-3 py-1 text-sm/6 text-gray-900"
                                     role="menuitem" tabindex="-1" id="user-menu-item-0">Your profile</a>

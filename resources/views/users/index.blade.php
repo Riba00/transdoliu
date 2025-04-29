@@ -12,57 +12,16 @@
                     Add New User
                 </button>
             </div>
-
+            
             <div class="px-4 sm:px-0">
                 <livewire:users.users-table />
             </div>
+            
+            <livewire:users.create-user-modal />
+            <livewire:users.edit-user-modal />
+            <livewire:users.delete-user-modal />
+
 
         </div>
     </div>
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Listen for the custom event to open the modal
-            window.addEventListener('truck-created', function () {
-                // Open the modal here
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Truck Created Successfully",
-                    showConfirmButton: false,
-                    timer: 2500,
-                    toast: true,
-                    timerProgressBar: true,
-                });
-            });
-
-            window.addEventListener('truck-deleted', function () {
-                // Open the modal here
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Truck Deleted Successfully",
-                    showConfirmButton: false,
-                    timer: 2500,
-                    toast: true,
-                    timerProgressBar: true,
-                });
-            });
-
-            window.addEventListener('truck-updated', function () {
-                // Open the modal here
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Truck Saved Successfully",
-                    showConfirmButton: false,
-                    timer: 2500,
-                    toast: true,
-                    timerProgressBar: true,
-                });
-            });
-
-        });
-    </script>
 </x-app-layout>
