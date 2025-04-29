@@ -77,10 +77,11 @@
 
                     <!-- Sidebar component, swap this element with another sidebar if you like -->
                     <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 pb-4" x-cloak>
-                        <div class="flex h-16 shrink-0 items-center">
-                            <img class="h-8 w-auto"
-                                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=white"
-                                alt="Your Company">
+                        <div class="flex h-16 shrink-0 my-7 items-center justify-center">
+                            <a href="{{ route('dashboard') }}">
+
+                                <img class="h-20 w-auto" src="{{ asset('img/logo.png') }}" alt="Transdoliu">
+                            </a>
                         </div>
                         <nav class="flex flex-1 flex-col">
                             <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -102,7 +103,8 @@
                                         <li>
                                             <a href="{{ route('trucks.index') }}" wire:navigate
                                                 class="group flex gap-x-3 rounded-md {{ request()->routeIs('trucks.*') ? 'bg-indigo-700 text-white' : 'text-indigo-200 hover:text-white hover:bg-indigo-700' }} p-2 text-sm/6 font-semibold">
-                                                <x-svg.truck class="size-6 shrink-0 text-indigo-200 group-hover:text-white" />
+                                                <x-svg.truck
+                                                    class="size-6 shrink-0 text-indigo-200 group-hover:text-white" />
                                                 Trucks
                                             </a>
                                         </li>
@@ -162,9 +164,10 @@
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
             <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 pb-4">
-                <div class="flex h-16 shrink-0 items-center">
-                    <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=white"
-                        alt="Your Company">
+                <div class="flex h-16 shrink-0 mt-7 mb-4 items-center">
+                    <a href="{{ route('dashboard') }}">
+                        <img class="size-20 w-auto" src="{{ asset('img/logo.png') }}" alt="Transdoliu">
+                    </a>
                 </div>
                 <nav class="flex flex-1 flex-col">
                     <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -270,9 +273,10 @@
                                 <span class="sr-only">Open user menu</span>
                                 <span class="inline-block size-8 overflow-hidden rounded-full bg-gray-100">
                                     <svg class="size-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                                      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                        <path
+                                            d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
                                     </svg>
-                                  </span>
+                                </span>
                                 <span class="hidden lg:flex lg:items-center">
                                     <span class="ml-4 text-sm/6 font-semibold text-gray-900"
                                         aria-hidden="true">{{ auth()->user()->name }}</span>
@@ -305,7 +309,8 @@
                                 x-transition:leave-end="transform opacity-0 scale-95" role="menu"
                                 aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                                 <div class="border-b border-gray-200 bg-gray-200 sm:hidden">
-                                    <span class="block px-3 py-1 font-bold text-sm/6 text-gray-900">{{ auth()->user()->name }}</span>
+                                    <span
+                                        class="block px-3 py-1 font-bold text-sm/6 text-gray-900">{{ auth()->user()->name }}</span>
                                 </div>
 
 
@@ -335,7 +340,7 @@
     @livewireScripts
 
     <script>
-        window.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('DOMContentLoaded', function () {
             window.addEventListener('show-toast', ($data) => {
                 const {
                     message,
@@ -351,7 +356,7 @@
                     toast: true,
                     timerProgressBar: true,
                 });
-                
+
             });
         });
     </script>
