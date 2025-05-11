@@ -26,18 +26,17 @@
 
         <div x-show="currentCustomersTab === 'customers'" class="mt-6">
             <div class="flex justify-end">
-                <button type="button" @click="$dispatch('open-truck-create-modal')"
+                <button type="button" @click="$dispatch('open-customer-create-modal')"
                     class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create
                     New Customer</button>
             </div>
             <div class="px-4 sm:px-0">
-                <livewire:trucks.trucks-table />
+                <livewire:customers.customers-table />
             </div>
 
-            <livewire:trucks.create-truck-modal />
-            <livewire:trucks.edit-truck-modal />
-            <livewire:trucks.delete-truck-modal />
-
+            <livewire:customers.create-customer-modal />
+            <livewire:customers.edit-customer-modal />
+            <livewire:customers.delete-customer-modal />
         </div>
 
         <div x-show="currentCustomersTab === 'locations'" class="mt-6" x-cloak>
